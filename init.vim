@@ -51,6 +51,12 @@ let g:netrw_liststyle=3 " tree view in netrw
 let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript'] " syntax highlighting in markdown
 nnoremap <leader>v :e $MYVIMRC<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
@@ -97,6 +103,7 @@ nnoremap <leader>gl :G log -100<cr>
 
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+
 " nvim/treesitter
 colorscheme codedark 
 lua <<EOF
@@ -124,4 +131,11 @@ set foldexpr=nvim_treesitter#foldexpr()
 " 'junegunn/goyo.vim' and 'junegunn/limelight.vim'
 let g:goyo_width = 150
 nmap <silent> <Leader>l :Goyo<CR>:Limelight!!<CR>
+
+" autocmd
+augroup filetype_json
+    autocmd!
+    autocmd FileType json setlocal foldmethod=syntax
+    autocmd FileType json set foldlevelstart=0
+augroup END
 
